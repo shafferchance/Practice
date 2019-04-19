@@ -26,3 +26,18 @@ From difficulties on linux host, instead of WSL at home. Noticed that
 
 All CRUD appears to work with minimal implementation, which is nice. This
     can be limited by the 
+    + This is due to the inheritance from the CRUD Repo of the 
+    PagingAndSortingRepo
+
+`@RepositoryRestResource` is not req for export, but rather allows for
+    details to change such that the endpoint will be set value instead
+    of default value
+
+By default spring attempts to connect to a locally hosted instance of 
+    Mongo.
+    + This can be changed via the application.properties with the 
+    following entries:
+        x `spring.data.mongodb.host={hostname}` Default: localhost
+        x `spring.data.mongodb.port={port}` Deafult: 27017
+        x `spring.data.mongodb.uri=mongodb://{user|opt:pass|opt}@
+            {hostname}:{port}/{db}`
