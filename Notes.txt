@@ -1,0 +1,19 @@
+// Since VS code is the chose IDE eclipse plugin is not required 
+From build.gradle files
+
+// Without specification all HTTP operations are assumed
+    Here is how to specify: @RequestMapping(method=GET, value="/greeting")
+From GreetingController
+
+RequstParam binds variable to endpoint
+
+RestController marks class to return as domain instead of view. 
+    represented by Controller and ResponseBody in one.
+
+In the RESTful Web Service guide it is explained that the object are 
+    transformed via Jackson 2 to JSON.
+
+SpringBootApplication reprsents the following: configuration, src of bean 
+    defs for app context; EnableAutoConfiguration, EnableWebMvc if 
+    `spring-webmvc` is on classpath, and ComponentScan, for looping for 
+    other components.
