@@ -48,3 +48,14 @@ Applications was tested successfully
 
 My MongoDB server did not have a test db, the program made one by 
     it-self.
+
+Docker and Spring Boot
++ Java and Jar are only reqs
++ JAR_FILE is added to the containers as `app.jar`
+    x Which is then executed by ENTRYPOINT
++ VOLUME is where program's working directorys are created
+    x Root where tmp will be created is `/var/lib/docker`
+    x Required for application that need to write to the file system
++ /dev/urandom was added to help speedup startup but is not necessary
+    with new Sprint Boot applications.
+    x The above is only valid with the standard version of tomcat 
