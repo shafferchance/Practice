@@ -43,3 +43,8 @@ By default spring attempts to connect to a locally hosted instance of
         x `spring.data.mongodb.port={port}` Deafult: 27017
         x `spring.data.mongodb.uri=mongodb://{user|opt:pass|opt}@
             {hostname}:{port}/{db}`
+
+Applications was tested successfully
+
+My MongoDB server did not have a test db, the program made one by 
+    it-self.
