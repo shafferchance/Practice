@@ -17,3 +17,6 @@ SpringBootApplication reprsents the following: configuration, src of bean
     defs for app context; EnableAutoConfiguration, EnableWebMvc if 
     `spring-webmvc` is on classpath, and ComponentScan, for looping for 
     other components.
+
+Further reading, they plainly state the use of H2 database for storage of
+    the Person repository created.
