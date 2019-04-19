@@ -62,3 +62,8 @@ Docker and Spring Boot
 
 DEPENDENCY is much mmuch faster since there is direct access to the data.
 
+build.gradle
++ task (Create action) unpack then declare type of task (ex Copy)
++ tag `name` for the image file to be generated
++ location with `into`
++ buildArg defines Argument declared in dockerfile
