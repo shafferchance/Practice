@@ -67,3 +67,5 @@ build.gradle
 + tag `name` for the image file to be generated
 + location with `into`
 + buildArg defines Argument declared in dockerfile
+
+Look for alternative to palantir...
