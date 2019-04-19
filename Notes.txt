@@ -23,11 +23,13 @@ Further reading, they plainly state the use of H2 database for storage of
 
 From difficulties on linux host, instead of WSL at home. Noticed that
     if the java version was not specified the program would error out.
+    + Using gradle without wrapper created use 
+      `-Dorg.gradle.java.home={JDK}`
 
 All CRUD appears to work with minimal implementation, which is nice. This
     can be limited by the 
     + This is due to the inheritance from the CRUD Repo of the 
-    PagingAndSortingRepo
+      PagingAndSortingRepo
 
 `@RepositoryRestResource` is not req for export, but rather allows for
     details to change such that the endpoint will be set value instead
