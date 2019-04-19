@@ -20,3 +20,9 @@ SpringBootApplication reprsents the following: configuration, src of bean
 
 Further reading, they plainly state the use of H2 database for storage of
     the Person repository created.
+
+From difficulties on linux host, instead of WSL at home. Noticed that
+    if the java version was not specified the program would error out.
+
+All CRUD appears to work with minimal implementation, which is nice. This
+    can be limited by the 
