@@ -59,3 +59,6 @@ Docker and Spring Boot
 + /dev/urandom was added to help speedup startup but is not necessary
     with new Sprint Boot applications.
     x The above is only valid with the standard version of tomcat 
+
+DEPENDENCY is much mmuch faster since there is direct access to the data.
+
