@@ -13,4 +13,22 @@ public class Person {
 
     private String firstName;
     private String lastName;
+
+    // Getter Methods
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    // Setter Methods
+    public void setFirstName() {
+        this.firstName = firstName;
+    }
+
+    public void setLastName() {
+        this.lastName = lastName;
+    }
 }
