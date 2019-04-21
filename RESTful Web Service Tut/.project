@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Docker</name>
-	<comment>Project Docker created by Buildship.</comment>
+	<name>RESTful Web Service Tut</name>
+	<comment>Project RESTful Web Service Tut created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

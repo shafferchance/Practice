@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Docker</name>
-	<comment>Project Docker created by Buildship.</comment>
+	<name>JPA_Data</name>
+	<comment>Project JPA_Data created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

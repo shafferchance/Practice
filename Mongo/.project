@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Docker</name>
-	<comment>Project Docker created by Buildship.</comment>
+	<name>Mongo</name>
+	<comment>Project Mongo created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
