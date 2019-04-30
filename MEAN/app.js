@@ -1,18 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const indexRouter = require('./index');
 
-const cb = bodyParser.json();
+const personRouter = require('./index')
+const cb = require('body-parser').json();
 
-mongoose.connect('mongodb://localhost:27017/test',{useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
 const app = express();
-
 app.use(cb);
-app.use('/', indexRouter);
+
+app.use('/', personRouter);
 
 console.log("Listening on Port 3000...");
 app.listen(3000);

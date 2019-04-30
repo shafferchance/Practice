@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PersonSchema = new Schema({
+const Person = new Schema({
     firstName: String,
     lastName: String,
 });
 
-PersonSchema
+Person
 .virtual('url')
-.get(() => {
-    return '/people/'+this._id;
+.get(()=> {
+    return '/people/' + this._id
 });
 
-const Person = mongoose.model('Person', PersonSchema);
-
-module.exports = Person;
+module.exports = mongoose.model('Person', Person);
