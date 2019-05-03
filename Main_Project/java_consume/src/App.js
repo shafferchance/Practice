@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import PeopleList from "./components/people-list.component";
-//import EditPerson from "./components/edit-person.component";
-//import CreatePerson from "./components/create-person.component";
+import EditPerson from './components/edit-person.component';
+import CreatePerson from "./components/create-person.component";
+
+// Tutorial followed to create exact example then referenced to create this site
+// https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
 
 class App extends Component {
   render() {
@@ -27,7 +30,8 @@ class App extends Component {
           </nav>
           <br />
           <Route path="/" exact component={PeopleList} />
-          
+          <Route path="/edit/:id" component={EditPerson} />
+          <Route path="/create" component={CreatePerson} />
         </div>
       </Router>
     );
