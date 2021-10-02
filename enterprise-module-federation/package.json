@@ -1,0 +1,24 @@
+{
+    "name": "enterprise-module-federation",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "lerna run --parallel start",
+        "build": "lerna run build",
+        "serve": "lerna run --parallel serve",
+        "clean": "lerna run --parallel clean"
+    },
+    "author": "Chanceler Shaffer",
+    "license": "ISC",
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    },
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "App1",
+            "App2"
+        ]
+    }
+}

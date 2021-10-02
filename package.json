@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "analytics": "^0.7.15",
+    "use-analytics": "^0.0.5"
+  }
+}

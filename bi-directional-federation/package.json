@@ -1,0 +1,14 @@
+{
+    "name": "bi-directional",
+    "private": true,
+    "devDependencies": {
+        "lerna": "^4.0.0"
+    },
+    "scripts": {
+        "start": "lerna run --scope @bi-directional-federation/* --parallel start",
+        "build": "lerna run --scope @bi-directional-federation/* build",
+        "serve": "lerna run --scope @bi-directional-federation/* --parallel serve",
+        "clean": "lerna run --scope @bi-directional-federation/* --parallel clean",
+        "kill": "kill-port 3001 3002"
+    }
+}

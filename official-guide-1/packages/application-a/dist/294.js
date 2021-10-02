@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkapplication_a=self.webpackChunkapplication_a||[]).push([[294],{287:(e,l,n)=>{n.r(l),n.d(l,{default:()=>u});var t=n(377),a=n.n(t);const c=function(){return a().createElement("h1",null,"Hello from Application A!")},r=a().lazy((()=>n.e(764).then(n.t.bind(n,764,23)))),u=()=>a().createElement(a().Fragment,null,a().createElement(c,null),a().createElement(a().Suspense,{fallback:"...loading"},a().createElement(r,null)))}}]);
+//# sourceMappingURL=294.js.map

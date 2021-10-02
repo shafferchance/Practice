@@ -1,0 +1,1 @@
+{"version":3,"file":"938.js","mappings":"gKAEe,SAASA,IACpB,OAAO","sources":["webpack://application-b/./src/Message.jsx"],"sourcesContent":["import React from \"react\";\r\n\r\nexport default function SayHelloFromB() {\r\n    return <h1>Hello from application B!</h1>;\r\n}\r\n"],"names":["SayHelloFromB"],"sourceRoot":""}
