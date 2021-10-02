@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkapplication_b=self.webpackChunkapplication_b||[]).push([[294],{294:(e,n,a)=>{a.r(n),a.d(n,{default:()=>c});var t=a(377),l=a.n(t),p=a(938);const c=()=>{l().Fragment,p.Z,l().Suspense}},938:(e,n,a)=>{a.d(n,{Z:()=>p});var t=a(377),l=a.n(t);function p(){return l().createElement("h1",null,"Hello from application B!")}}}]);
-//# sourceMappingURL=294.js.map

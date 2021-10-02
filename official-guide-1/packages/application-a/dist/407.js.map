@@ -1,1 +1,0 @@
-{"version":3,"file":"407.js","mappings":"wJAGAA,GAAAA,OAAgB,kBAACC,IAAD,MAASC,SAASC,eAAe","sources":["webpack://application-a/./src/bootstrap.jsx"],"sourcesContent":["import React from \"react\";\r\nimport ReactDOM from \"react-dom\";\r\n\r\nReactDOM.render(<App />, document.getElementById(\"root\"));\r\n"],"names":["ReactDOM","App","document","getElementById"],"sourceRoot":""}
