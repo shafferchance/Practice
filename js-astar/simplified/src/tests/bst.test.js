@@ -3,7 +3,7 @@ const { BST, BSTNode } = require("../binarySearchTree/binarySearchTree");
 describe("CRUD BST", () => {
     it("Create BST", () => {
         const bst = new BST();
-        expect(bst).not.toBeUndefined();
+        expect(bst).toBeDefined();
     });
 
     it("Insert node", () => {
