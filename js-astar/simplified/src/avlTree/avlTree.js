@@ -44,14 +44,58 @@ class AVL {
 
         node.balancingFactor = leftScore - rightScore;
 
+        // Rotation logic
+        if (node.balancingFactor > 1) {
+            // LR case
+            if (node.left.balancingFactor === -1) {
+                this.leftRotation(node.left.right);
+            }
+            this.rightRotation(node.left);
+        } else if (node.balancingFactor < -1) {
+            if (node.right.balancingFactor === 1) {
+                this.rightRotation(node.right.left);
+            }
+            this.leftRotation(node.right);
+        }
+
         if (node.parent) {
             return this.calculateBalancingFactor(node.parent);
         }
     }
 
-    leftRotation(node) {}
+    leftRotation(node) {
+        const nodeParent = node.parent;
+        const newParent = nodeParent?.parent;
+        const leftSubtree = node.left;
 
-    rightRotation(node) {}
+        // Left rotation means old left subtree becomes old parent's right subtree
+        nodeParent.right = leftSubtree;
+        nodeParent.parent = node;
+        node.left = nodeParent;
+        node.parent = newParent;
+
+        // If no parent of parent then we are at the root of the AVL
+        if (!newParent) {
+            this.head = node;
+        }
+    }
+
+    rightRotation(node) {
+        const nodeParent = node.parent;
+        const newParent = nodeParent.parent;
+        const rightSubtree = node.right;
+
+        // Right rotation means old right subtree becomes old parent's left subtree
+        nodeParent.left = rightSubtree;
+        nodeParent.parent = node;
+        node.right = nodeParent;
+        node.parent = newParent;
+
+        // If no parent of parent then we are at the root of the AVL
+        if (!newParent) {
+            this.head = node;
+        }
+    }
 
     insert(value) {
         const [direction, parent] = this._traversal(value);

@@ -1,6 +1,20 @@
 const { AVL, AVLNode } = require("../avlTree/avlTree");
 
-describe("CRUD AVL", () => {
+// jest.mock();
+
+describe("CRUD BST under AVL", () => {
+    // beforeAll(() => {
+    //     mockedLeftRotation = jest.fn();
+    //     mockedRightRotation = jest.fn();
+
+    //     AVL.prototype.leftRotation = mockedLeftRotation;
+    //     AVL.prototype.rightRotation = mockedRightRotation;
+    // });
+
+    // afterAll(() => {
+    //     jest.resetModules();
+    // });
+
     it("Create AVL", () => {
         const avl = new AVL();
         expect(avl).toBeDefined();
@@ -66,6 +80,20 @@ describe("CRUD AVL", () => {
 });
 
 describe("Balancing Factors within AVL", () => {
+    let mockedLeftRotation, mockedRightRotation;
+
+    // beforeAll(() => {
+    //     mockedLeftRotation = jest.fn();
+    //     mockedRightRotation = jest.fn();
+
+    //     AVL.prototype.leftRotation = mockedLeftRotation;
+    //     AVL.prototype.rightRotation = mockedRightRotation;
+    // });
+
+    // afterAll(() => {
+    //     jest.resetModules();
+    // });
+
     it("Complete and Full Tree", () => {
         const avl = new AVL();
         avl.insert(5);
@@ -129,18 +157,40 @@ describe("Balancing Factors within AVL", () => {
 describe("Tree rotations", () => {
     it("LL rotation", () => {
         const avl = new AVL();
+
+        console.log(AVL.prototype.leftRotation);
+
         avl.insert(10);
-        avl.insert(5);
-        avl.insert(6);
-        // console.log(
-        //     `BFs 10: ${avl.head.balancingFactor} | 5: ${avl.head.left.balancingFactor} | 6: ${avl.head.left.right.balancingFactor}`
-        // );
-        expect(true).toBe(true);
+        avl.insert(13);
+        avl.insert(15);
+
+        expect(avl.head.value).toBe(13);
     });
 
-    it("RR rotation", () => {});
+    it("RR rotation", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(8);
+        avl.insert(6);
 
-    it("LR rotation", () => {});
+        expect(avl.head.value).toBe(8);
+    });
 
-    it("RL rotation", () => {});
+    it("LR rotation", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(5);
+        avl.insert(7);
+
+        expect(avl.head.value).toBe(7);
+    });
+
+    it("RL rotation", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(15);
+        avl.insert(12);
+
+        expect(avl.head.value).toBe(12);
+    });
 });
