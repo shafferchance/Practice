@@ -76,13 +76,40 @@ describe("Balancing Factors within AVL", () => {
     });
 
     // This test will break once turns are added, might have to mock insert function for this test to work properly
-    it("Unbalanced tree", () => {
+    it("Unbalanced special LL", () => {
         const avl = new AVL();
         avl.insert(10);
         avl.insert(5);
         avl.insert(1);
 
         expect(avl.head.balancingFactor).toBe(2);
+    });
+
+    it("Unbalanced special LR", () => {
+        const avl = new AVL();
+        avl.insert(5);
+        avl.insert(3);
+        avl.insert(4);
+
+        expect(avl.head.balancingFactor).toBe(2);
+    });
+
+    it("Unbalanced special RL", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(15);
+        avl.insert(12);
+
+        expect(avl.head.balancingFactor).toBe(-2);
+    });
+
+    it("Unbalanced special RR", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(13);
+        avl.insert(14);
+
+        expect(avl.head.balancingFactor).toBe(-2);
     });
 
     it("Rebalance after delete", () => {
@@ -99,4 +126,21 @@ describe("Balancing Factors within AVL", () => {
     });
 });
 
-describe("Tree rotations", () => {});
+describe("Tree rotations", () => {
+    it("LL rotation", () => {
+        const avl = new AVL();
+        avl.insert(10);
+        avl.insert(5);
+        avl.insert(6);
+        // console.log(
+        //     `BFs 10: ${avl.head.balancingFactor} | 5: ${avl.head.left.balancingFactor} | 6: ${avl.head.left.right.balancingFactor}`
+        // );
+        expect(true).toBe(true);
+    });
+
+    it("RR rotation", () => {});
+
+    it("LR rotation", () => {});
+
+    it("RL rotation", () => {});
+});

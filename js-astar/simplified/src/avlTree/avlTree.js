@@ -38,9 +38,9 @@ class AVL {
 
     calculateBalancingFactor(node) {
         const leftScore =
-            (node.left?.balancingFactor ?? 0) + (node.left ? 1 : 0);
+            Math.abs(node.left?.balancingFactor ?? 0) + (node.left ? 1 : 0);
         const rightScore =
-            (node.right?.balancingFactor ?? 0) + (node.right ? 1 : 0);
+            Math.abs(node.right?.balancingFactor ?? 0) + (node.right ? 1 : 0);
 
         node.balancingFactor = leftScore - rightScore;
 
@@ -48,6 +48,10 @@ class AVL {
             return this.calculateBalancingFactor(node.parent);
         }
     }
+
+    leftRotation(node) {}
+
+    rightRotation(node) {}
 
     insert(value) {
         const [direction, parent] = this._traversal(value);
@@ -96,27 +100,29 @@ class AVL {
         if (deleteNode.value < deleteNode.parent.value) {
             // Re-Attaching detacted left tree
             const leftNode = deleteNode.right ?? deleteNode.left;
-            if (leftNode !== deleteNode.left) {
-                leftNode.left = deleteNode.left;
+            if (leftNode) {
+                if (leftNode !== deleteNode.left) {
+                    leftNode.left = deleteNode.left;
+                }
+                deleteNode.parent.left = leftNode;
+                leftNode.parent = deleteNode.parent;
+                this.calculateBalancingFactor(leftNode);
+                return;
             }
-            deleteNode.parent.left = leftNode;
-            leftNode.parent = deleteNode.parent;
-            this.calculateBalancingFactor(leftNode);
         } else {
             // Re-Attaching detacted right tree
             const rightNode = deleteNode.left ?? deleteNode.right;
-            console.log(
-                deleteNode.value,
-                deleteNode.left?.value,
-                deleteNode.right?.value
-            );
-            if (rightNode !== deleteNode.right) {
-                rightNode.right = deleteNode.right;
+            if (rightNode) {
+                if (rightNode !== deleteNode.right) {
+                    rightNode.right = deleteNode.right;
+                }
+                deleteNode.parent.right = rightNode;
+                rightNode.parent = deleteNode.parent;
+                this.calculateBalancingFactor(rightNode);
+                return;
             }
-            deleteNode.parent.right = rightNode;
-            rightNode.parent = deleteNode.parent;
-            this.calculateBalancingFactor(rightNode);
         }
+        this.calculateBalancingFactor(deleteNode.parent);
     }
 }
 
