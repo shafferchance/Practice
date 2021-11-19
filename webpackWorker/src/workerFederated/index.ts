@@ -1,23 +1,21 @@
 import { getHtmlElementById } from "../utils";
-import { RelayImport } from "./types";
+import { RelayImport } from "../workerRelay";
 
-export * from "./types";
-
-function setupRemoteWorker() {
+function setupFederatedWorker() {
   /// ---------------------- remoteModule worker --------------------
-  const loadButton = getHtmlElementById<HTMLButtonElement>("load");
-  const sendButton = getHtmlElementById<HTMLButtonElement>("send");
-  const messages = getHtmlElementById<HTMLUListElement>("messages");
+  const loadButton = getHtmlElementById<HTMLButtonElement>("loadMF");
+  const sendButton = getHtmlElementById<HTMLButtonElement>("sendMF");
+  const messages = getHtmlElementById<HTMLUListElement>("messagesMF");
 
   const remoteESMWorker = new Worker(
-    new URL("remoteModule.ts", import.meta.url)
+    new URL("remoteFederated.ts", import.meta.url)
   );
   console.log(remoteESMWorker);
   loadButton.addEventListener("click", () => {
     remoteESMWorker.postMessage({
       event: "IMPORT_SCRIPT",
       data: {
-        url: "http://localhost:3001/remote-worker.system.js",
+        url: "http://localhost:3001/remote-worker.js",
         scope: "remoteworker",
         module: "./Remote",
         retries: 0,
@@ -41,4 +39,4 @@ function setupRemoteWorker() {
   );
 }
 
-export default setupRemoteWorker;
+export default setupFederatedWorker;
