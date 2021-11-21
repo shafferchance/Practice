@@ -1,47 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Remote Worker Test</title>
-  </head>
-  <body style="background-color: black; color: whitesmoke">
-    <div style="display: flex">
-      <div>
-        <h2>Remote Worker</h2>
-        <div>
-          <button id="send">Send Message</button>
-          <div style="display: inline-flex">
-            <button id="load" style="height: 50%">
-              Load Remote into Worker
-            </button>
-            <h3 id="status" style="margin-top: 0; padding-right: 5rem">
-              Status:
-            </h3>
-          </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Remote Worker Test</title>
+    </head>
+    <body style="background-color: black; color: whitesmoke">
+        <div style="display: flex">
+            <div>
+                <h2>Remote Worker</h2>
+                <div>
+                    <button id="send">Send Message</button>
+                    <div style="display: inline-flex">
+                        <button id="load" style="height: 50%">
+                            Load Remote into Worker
+                        </button>
+                        <h3
+                            id="status"
+                            style="margin-top: 0; padding-right: 5rem"
+                        >
+                            Status:
+                        </h3>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-top: 0; text-align: center">Messages</h3>
+                    <ul id="messages" style="list-style: none"></ul>
+                </div>
+            </div>
+            <div>
+                <h2>Federated Worker</h2>
+                <div>
+                    <button id="sendMF">Send Message</button>
+                    <div style="display: inline-flex">
+                        <button id="loadMF" style="height: 50%">
+                            Load Federated into Worker
+                        </button>
+                        <h3
+                            id="statusMF"
+                            style="margin-top: 0; padding-right: 5rem"
+                        >
+                            Status:
+                        </h3>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-top: 0; text-align: center">Messages</h3>
+                    <ul id="messagesMF" style="list-style: none"></ul>
+                </div>
+            </div>
+            <div>
+                <h2>Federate Package</h2>
+                <div style="display: inline-flex">
+                    <button id="packageMF" style="height: 50%">
+                        Load Federated Module
+                    </button>
+                    <h3
+                        id="packageMFStatus"
+                        style="margin-top: 0; padding-right: 5rem"
+                    >
+                        Status:
+                    </h3>
+                </div>
+            </div>
         </div>
-        <div>
-          <h3 style="margin-top: 0; text-align: center">Messages</h3>
-          <ul id="messages" style="list-style: none"></ul>
-        </div>
-      </div>
-      <div>
-        <h2>Federated Worker</h2>
-        <div>
-          <button id="sendMF">Send Message</button>
-          <div style="display: inline-flex">
-            <button id="loadMF" style="height: 50%">
-              Load Federated into Worker
-            </button>
-            <h3 id="statusMF" style="margin-top: 0; padding-right: 5rem">
-              Status:
-            </h3>
-          </div>
-        </div>
-        <div>
-          <h3 style="margin-top: 0; text-align: center">Messages</h3>
-          <ul id="messagesMF" style="list-style: none"></ul>
-        </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
