@@ -30,7 +30,18 @@
             <div>
                 <h2>Federated Worker</h2>
                 <div>
-                    <button id="sendMF">Send Message</button>
+                    <div>
+                        <label for="urlMF">Remote URL</label>
+                        <input id="urlMF" type="text" />
+                    </div>
+                    <div>
+                        <label for="scopeMF">Remote Scope</label>
+                        <input id="scopeMF" type="text" />
+                    </div>
+                    <div>
+                        <label for="moduleMF">Remote Module</label>
+                        <input id="moduleMF" type="text" />
+                    </div>
                     <div style="display: inline-flex">
                         <button id="loadMF" style="height: 50%">
                             Load Federated into Worker
@@ -44,6 +55,17 @@
                     </div>
                 </div>
                 <div>
+                    <div id="remoteFunction">
+                        <div>
+                            <label for="remoteFunctionI">Function Name</label>
+                            <input type="text" id="remoteFunctionI" />
+                        </div>
+                        <div>
+                            <label for="remoteFunctionM">Function Module</label>
+                            <input type="text" id="remoteFunctionM" />
+                        </div>
+                        <button id="remoteFunctionE">Execute</button>
+                    </div>
                     <h3 style="margin-top: 0; text-align: center">Messages</h3>
                     <ul id="messagesMF" style="list-style: none"></ul>
                 </div>

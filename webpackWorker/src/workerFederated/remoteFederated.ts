@@ -64,11 +64,10 @@ self.document = {
                     },
                 };
 
-                self.jobs[jobId] = () =>
-                    Promise.resolve(() => {
-                        console.log("Resolving fetch");
-                        childNode.onload && childNode.onload();
-                    });
+                self.jobs[jobId] = () => {
+                    console.log("Resolving fetch");
+                    childNode.onload && childNode.onload();
+                };
                 postMessage(job);
             } catch (e) {
                 console.error(e);
@@ -171,9 +170,16 @@ const handlers: WorkerJobHandlers = {
             .bind(self)(module)
             .then((remoteModule) => {
                 self[module] = remoteModule();
-
+                console.log(self[module]);
                 // reset scope so the code know the next can be processed
                 self.scope = undefined;
+                console.log(self);
+
+                postMessage({
+                    ...job,
+                    type: "IMPORT_MODULE_END",
+                    done: true,
+                });
             });
     },
     IMPORT_SCRIPT_START: (job) => {

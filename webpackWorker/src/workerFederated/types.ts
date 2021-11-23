@@ -28,23 +28,27 @@ export type AsyncCallState<T = unknown> = {
     module: string;
     method: string;
     async: true;
-    args: T;
+    args?: T;
 };
 
 export type AsyncReturnState<T = unknown> = {
     module: string;
     method: string;
-    result: T;
+    result?: T;
 };
 
 export type JobTypes =
     | "IMPORT_SCRIPT_START"
     | "IMPORT_SCRIPT_END"
     | "IMPORT_MODULE"
+    | "IMPORT_MODULE_END"
     | "ASYNC_METHOD_CALL"
     | "ASYNC_METHOD_RETURN";
 
-export type WorkerJobs = Exclude<JobTypes, "ASYNC_METHOD_RETURN">;
+export type WorkerJobs = Exclude<
+    JobTypes,
+    "ASYNC_METHOD_RETURN" | "IMPORT_MODULE_END"
+>;
 
 export interface Job<T> {
     type: JobTypes;
@@ -58,6 +62,7 @@ export class JobStatePerType implements Record<JobTypes, unknown> {
     IMPORT_SCRIPT_START!: ImportScriptState;
     IMPORT_SCRIPT_END!: ImportScriptState;
     IMPORT_MODULE!: ImportModuleState;
+    IMPORT_MODULE_END!: ImportModuleState;
     ASYNC_METHOD_CALL!: AsyncCallState;
     ASYNC_METHOD_RETURN!: AsyncReturnState;
 }
