@@ -15,6 +15,7 @@ export type DefaultJobState = {
 
 export type ImportScriptState = {
     url: string;
+    host?: string;
 };
 
 export type ImportModuleState = {

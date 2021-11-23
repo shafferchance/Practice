@@ -2,6 +2,7 @@ import {
     AsyncCallState,
     AsyncReturnState,
     ImportModuleState,
+    ImportScriptState,
     Job,
     Script,
     WorkerJobHandlers,
@@ -19,7 +20,8 @@ declare global {
     }
     interface Window {
         scripts: Array<Script>;
-        jobs: Job<ImportModuleState | ImportModuleState | AsyncCallState>[];
+        jobs: Record<string, any>;
+        scope?: { host: string };
     }
 
     interface Window {
@@ -31,7 +33,16 @@ declare global {
     }
 }
 
-importScripts.bind(self);
+function v4UUID() {
+    // https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid
+    // @ts-ignore: I know how strange this looks but it works
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+        (
+            c ^
+            (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+        ).toString(16)
+    );
+}
 
 self.scripts = [];
 self.jobs = [];
@@ -40,10 +51,25 @@ self.document = {
     ...self.document,
     head: {
         appendChild: (childNode: Script) => {
+            console.log("Appending: ", childNode);
             try {
-                console.log(childNode);
-                importScripts(childNode.src || childNode.getAttribute("src"));
-                childNode.onload && childNode.onload();
+                const jobId = v4UUID();
+                // Might need to make a parent job thing
+                const job: Job<ImportScriptState> = {
+                    type: "IMPORT_SCRIPT_START",
+                    id: jobId,
+                    state: {
+                        url: childNode.src || childNode.getAttribute("src"),
+                        host: self.scope?.host,
+                    },
+                };
+
+                self.jobs[jobId] = () =>
+                    Promise.resolve(() => {
+                        console.log("Resolving fetch");
+                        childNode.onload && childNode.onload();
+                    });
+                postMessage(job);
             } catch (e) {
                 console.error(e);
                 childNode.onerror && childNode.onerror(e as Error);
@@ -53,8 +79,9 @@ self.document = {
     getElementsByTagName: (element: "script") => {
         return self.scripts as unknown as HTMLCollectionOf<HTMLScriptElement>;
     },
-    createElement: (element: "script") =>
-        ({
+    createElement: (element: "script") => {
+        console.log("creating");
+        return {
             src: undefined,
             attributes: {},
             getAttribute(attribute: "src") {
@@ -65,7 +92,8 @@ self.document = {
             },
             onload: undefined,
             onerror: undefined,
-        } as Script as unknown as HTMLScriptElement),
+        } as Script as unknown as HTMLScriptElement;
+    },
 };
 
 console.log(self);
@@ -132,13 +160,35 @@ const handlers: WorkerJobHandlers = {
         // Parse Module Map
         // Order all scripts
         // Load Federated Module
+        const parsedURL = new URL(url);
+
+        self.scope = {
+            host: parsedURL.host,
+        };
+
+        importScripts(url);
+        self[scope].get
+            .bind(self)(module)
+            .then((remoteModule) => {
+                self[module] = remoteModule();
+
+                // reset scope so the code know the next can be processed
+                self.scope = undefined;
+            });
     },
     IMPORT_SCRIPT_START: (job) => {
         postMessage(job);
     },
     IMPORT_SCRIPT_END: (job) => {
-        const { url } = job.state;
-        importScripts(url);
+        const { id, state } = job;
+        const { url } = state;
+        console.log("Fetching script: ", job);
+        if (id && self.jobs[id]) {
+            importScripts(url);
+            self.jobs[id]();
+        } else {
+            importScripts(url);
+        }
         // TODO: resolve done
     },
 };
@@ -173,13 +223,13 @@ onmessage = (workerEvent: WorkerJobMessage) => {
     //         // script.src = url;
     //         // self.scripts.push(script);
     //         // console.log(document.getElementsByTagName("script"));
-    //         // importScripts(url);
-    //         // console.log(self);
-    //         // self[scope].get
-    //         //     .bind(self)(module)
-    //         //     .then((remoteModule) => {
-    //         //         console.log(remoteModule);
-    //         //     });
+    // importScripts(url);
+    // console.log(self);
+    // self[scope].get
+    //     .bind(self)(module)
+    //     .then((remoteModule) => {
+    //         console.log(remoteModule);
+    //     });
     //         handlers[type](workerEvent.data as Job<ImportModuleState>);
     //         break;
     //     }

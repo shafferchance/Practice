@@ -14,11 +14,11 @@ function setupFederatedWorker() {
 
     loadButton.addEventListener("click", () => {
         remoteESMWorker.postMessage({
-            type: "IMPORT_SCRIPT_START",
+            type: "IMPORT_MODULE",
             state: {
                 url: "http://localhost:3001/remote-worker.js",
-                // scope: "remoteworker",
-                // module: "./Remote",
+                scope: "remoteworker",
+                module: "./Remote",
             },
         } as Job<ImportScriptState>);
     });
@@ -44,14 +44,31 @@ function initializeFederatedWorker(worker: Worker) {
                 }
 
                 const { id, parentJob, state } = event.data;
+                const { url, host } = state;
 
-                worker.postMessage({
-                    type: "IMPORT_SCRIPT_END",
-                    done: true,
-                    id,
-                    parentJob,
-                    state,
-                } as Job<ImportScriptState>);
+                console.log("[Client Side]: ", state);
+                if (host) {
+                    const newHost = new URL(url);
+                    newHost.host = host;
+                    worker.postMessage({
+                        type: "IMPORT_SCRIPT_END",
+                        done: true,
+                        state: {
+                            url: newHost.toString(),
+                            host,
+                        },
+                        id,
+                        parentJob,
+                    } as Job<ImportScriptState>);
+                } else {
+                    worker.postMessage({
+                        type: "IMPORT_SCRIPT_END",
+                        done: true,
+                        id,
+                        parentJob,
+                        state,
+                    } as Job<ImportScriptState>);
+                }
             }
         }
     );
