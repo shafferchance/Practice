@@ -9,7 +9,7 @@ function thingTwo(): string {
 }
 
 function coloredPrint() {
-  console.log(chalk.blue.bgRed.bold("remoteFile"));
+  console.log(chalk.blue.bgRed.bold("remoteFile2"));
 }
 
 export { getData, thingTwo, coloredPrint };

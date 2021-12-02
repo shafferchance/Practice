@@ -3,7 +3,7 @@ const ModuleFederationPlugin =
 
 module.exports = {
   mode: "development",
-  entry: "./remoteFile/src/index.ts",
+  entry: "./remoteFile2/src/index.ts",
   // output: {
   //   filename: "remote-worker.system.js",
   // },
@@ -20,7 +20,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   devServer: {
-    port: 3001,
+    port: 3002,
     hot: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -28,10 +28,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "remoteworker",
-      filename: "remote-worker.js",
+      name: "remoteworker2",
+      filename: "remote-worker-2.js",
       exposes: {
-        "./Remote": "./remoteFile/src/index.ts",
+        "./Remote2": "./remoteFile2/src/index.ts",
       },
       shared: ["chalk"],
     }),

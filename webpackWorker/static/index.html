@@ -1,89 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Remote Worker Test</title>
-    </head>
-    <body style="background-color: black; color: whitesmoke">
-        <div style="display: flex">
-            <div>
-                <h2>Remote Worker</h2>
-                <div>
-                    <button id="send">Send Message</button>
-                    <div style="display: inline-flex">
-                        <button id="load" style="height: 50%">
-                            Load Remote into Worker
-                        </button>
-                        <h3
-                            id="status"
-                            style="margin-top: 0; padding-right: 5rem"
-                        >
-                            Status:
-                        </h3>
-                    </div>
-                </div>
-                <div>
-                    <h3 style="margin-top: 0; text-align: center">Messages</h3>
-                    <ul id="messages" style="list-style: none"></ul>
-                </div>
-            </div>
-            <div>
-                <h2>Federated Worker</h2>
-                <div>
-                    <div>
-                        <label for="urlMF">Remote URL</label>
-                        <input id="urlMF" type="text" />
-                    </div>
-                    <div>
-                        <label for="scopeMF">Remote Scope</label>
-                        <input id="scopeMF" type="text" />
-                    </div>
-                    <div>
-                        <label for="moduleMF">Remote Module</label>
-                        <input id="moduleMF" type="text" />
-                    </div>
-                    <div style="display: inline-flex">
-                        <button id="loadMF" style="height: 50%">
-                            Load Federated into Worker
-                        </button>
-                        <h3
-                            id="statusMF"
-                            style="margin-top: 0; padding-right: 5rem"
-                        >
-                            Status:
-                        </h3>
-                    </div>
-                </div>
-                <div>
-                    <div id="remoteFunction">
-                        <div>
-                            <label for="remoteFunctionI">Function Name</label>
-                            <input type="text" id="remoteFunctionI" />
-                        </div>
-                        <div>
-                            <label for="remoteFunctionM">Function Module</label>
-                            <input type="text" id="remoteFunctionM" />
-                        </div>
-                        <button id="remoteFunctionE">Execute</button>
-                    </div>
-                    <h3 style="margin-top: 0; text-align: center">Messages</h3>
-                    <ul id="messagesMF" style="list-style: none"></ul>
-                </div>
-            </div>
-            <div>
-                <h2>Federate Package</h2>
-                <div style="display: inline-flex">
-                    <button id="packageMF" style="height: 50%">
-                        Load Federated Module
-                    </button>
-                    <h3
-                        id="packageMFStatus"
-                        style="margin-top: 0; padding-right: 5rem"
-                    >
-                        Status:
-                    </h3>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remote Worker Test</title>
+  </head>
+  <body style="background-color: black; color: whitesmoke">
+    <div style="display: flex">
+      <div>
+        <h2>Remote Worker</h2>
+        <div>
+          <button id="send">Send Message</button>
+          <div style="display: inline-flex">
+            <button id="load" style="height: 50%">
+              Load Remote into Worker
+            </button>
+            <h3 id="status" style="margin-top: 0; padding-right: 5rem">
+              Status:
+            </h3>
+          </div>
         </div>
-    </body>
+        <div>
+          <h3 style="margin-top: 0; text-align: center">Messages</h3>
+          <ul id="messages" style="list-style: none"></ul>
+        </div>
+      </div>
+      <div>
+        <h2>Federated Worker</h2>
+        <button id="sendMF">Load Static Remotes</button>
+        <div>
+          <div>
+            <label for="urlMF">Remote URL</label>
+            <input id="urlMF" type="text" />
+          </div>
+          <div>
+            <label for="scopeMF">Remote Scope</label>
+            <input id="scopeMF" type="text" />
+          </div>
+          <div>
+            <label for="moduleMF">Remote Module</label>
+            <input id="moduleMF" type="text" />
+          </div>
+          <div style="display: inline-flex">
+            <button id="loadMF" style="height: 50%">
+              Load Federated into Worker
+            </button>
+            <h3 id="statusMF" style="margin-top: 0; padding-right: 5rem">
+              Status:
+            </h3>
+          </div>
+        </div>
+        <div>
+          <div id="remoteFunction">
+            <div>
+              <label for="remoteFunctionI">Function Name</label>
+              <input type="text" id="remoteFunctionI" />
+            </div>
+            <div>
+              <label for="remoteFunctionM">Function Module</label>
+              <input type="text" id="remoteFunctionM" />
+            </div>
+            <button id="remoteFunctionE">Execute</button>
+          </div>
+          <h3 style="margin-top: 0; text-align: center">Messages</h3>
+          <ul id="messagesMF" style="list-style: none"></ul>
+        </div>
+      </div>
+      <div>
+        <h2>Federate Package</h2>
+        <div style="display: inline-flex">
+          <button id="packageMF" style="height: 50%">
+            Load Federated Module
+          </button>
+          <h3 id="packageMFStatus" style="margin-top: 0; padding-right: 5rem">
+            Status:
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
