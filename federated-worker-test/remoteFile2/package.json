@@ -1,0 +1,24 @@
+{
+  "name": "remote-file-2",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "author": "Chanceler Shaffer",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "module": "dist/remote-worker-2.js",
+  "browser": {
+    "./dist/remote-worker.ts": "./dist/remote-worker-2.ts"
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "serve": "http-server -p 3002 --cors"
+  },
+  "devDependencies": {
+    "http-server": "^14.0.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0"
+  }
+}

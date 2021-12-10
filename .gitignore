@@ -2,3 +2,4 @@
 **/.next
 **/.vscode
 **/dist
+.DS_Store

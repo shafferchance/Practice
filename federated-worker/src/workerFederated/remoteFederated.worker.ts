@@ -98,7 +98,7 @@ console.log(self);
 
 const handlers: WorkerJobHandlers = {
   ASYNC_METHOD_CALL: (job) => {
-    const { state, parentJob } = job;
+    const { state, id } = job;
     const { args, async, method, module } = state;
     if (!self[module]) {
       throw new Error(`Module [${module}] does not exist`);
@@ -123,7 +123,7 @@ const handlers: WorkerJobHandlers = {
               module,
               result,
             },
-            parentJob,
+            id,
           } as Job<AsyncReturnState>);
           return Promise.resolve(true);
         })
@@ -141,9 +141,9 @@ const handlers: WorkerJobHandlers = {
             module,
             result,
           },
-          parentJob,
+          id,
         } as Job<AsyncReturnState>);
-        if (parentJob) {
+        if (id) {
           return true;
         }
       } catch (e) {
@@ -197,7 +197,7 @@ const handlers: WorkerJobHandlers = {
 };
 
 onmessage = (workerEvent: WorkerJobMessage) => {
-  const { type, state, id, done, parentJob } = workerEvent.data;
+  const { type } = workerEvent.data;
 
   const handler = handlers[type as WorkerJobs];
 
