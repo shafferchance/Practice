@@ -1992,10 +1992,6 @@ faye-websocket@^0.11.3:
   dependencies:
     websocket-driver ">=0.5.1"
 
-federated-worker@../federated-worker/federated-worker-1.0.0.tgz:
-  version "1.0.0"
-  resolved "../federated-worker/federated-worker-1.0.0.tgz#b6bba01c2d9f5f0f56a78cd0f34f4f7570b4390c"
-
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.npmjs.org/fill-range/-/fill-range-7.0.1.tgz"

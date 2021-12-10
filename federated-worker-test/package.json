@@ -26,7 +26,5 @@
     "dev:remote": "webpack-dev-server --config webpack.remote.config.js",
     "dev:base": "webpack-dev-server"
   },
-  "dependencies": {
-    "federated-worker": "../federated-worker/federated-worker-1.0.0.tgz"
-  }
+  "dependencies": {}
 }
