@@ -27,7 +27,7 @@ function v4UUID() {
 export class FederatedWorker {
     private worker: Worker;
 
-    constructor() {
+    constructor(public debug = false) {
         this.worker = new FederatedModuleWorker();
         this.initializeFederatedWorker(this.worker);
     }
@@ -42,12 +42,13 @@ export class FederatedWorker {
                 // Primaly used to import scripts without cross origin concerns
                 // Please see: https://stackoverflow.com/questions/21913673/execute-web-worker-from-different-origin
                 if (event.data.type === "IMPORT_SCRIPT_START") {
-                    console.log(event);
+                    if (this.debug) {
+                        console.debug(event);
+                    }
+
                     if (!worker) {
                         throw new Error("How did this message get here?");
                     }
-
-                    console.log(event.data);
 
                     const { id, parentJob, state } = event.data;
                     const { url, host } = state;
@@ -130,7 +131,9 @@ export class FederatedWorker {
                 state,
             };
 
-            console.log(job);
+            if (this.debug) {
+                console.debug(job);
+            }
 
             const moduleError = (msg: ErrorEvent) => {
                 // Cleaning up handlers
@@ -140,7 +143,9 @@ export class FederatedWorker {
             };
 
             const moduleFinished = (msg: MessageEvent<Job<T>>) => {
-                console.log(msg);
+                if (this.debug) {
+                    console.debug(msg);
+                }
                 // Only matching if the parentJob ID is equivaltent to one sent
                 if (msg.data.parentJob === id) {
                     // Cleaning up handlers

@@ -50,7 +50,6 @@ self.document = {
     ...self.document,
     head: {
         appendChild: (childNode: Script) => {
-            console.log("Appending: ", childNode);
             try {
                 const jobId = v4UUID();
                 // Might need to make a parent job thing
@@ -64,7 +63,6 @@ self.document = {
                 };
 
                 self.jobs[jobId] = () => {
-                    console.log("Resolving fetch");
                     childNode.onload && childNode.onload();
                 };
                 postMessage(job);
@@ -78,7 +76,6 @@ self.document = {
         return self.scripts as unknown as HTMLCollectionOf<HTMLScriptElement>;
     },
     createElement: (element: "script") => {
-        console.log("creating");
         return {
             src: undefined,
             attributes: {},
@@ -93,8 +90,6 @@ self.document = {
         } as Script as unknown as HTMLScriptElement;
     },
 };
-
-console.log(self);
 
 const handlers: WorkerJobHandlers = {
     ASYNC_METHOD_CALL: (job) => {
@@ -169,10 +164,8 @@ const handlers: WorkerJobHandlers = {
             .bind(self)(module)
             .then((remoteModule) => {
                 self[module] = remoteModule();
-                console.log(self[module]);
                 // reset scope so the code know the next can be processed
                 self.host = undefined;
-                console.log(self);
 
                 postMessage({
                     ...job,
@@ -187,14 +180,12 @@ const handlers: WorkerJobHandlers = {
     IMPORT_SCRIPT_END: (job) => {
         const { id, state } = job;
         const { url } = state;
-        console.log("Fetching script: ", job);
         if (id && self.jobs[id]) {
             importScripts(url);
             self.jobs[id]();
         } else {
             importScripts(url);
         }
-        // TODO: resolve done
     },
 };
 
