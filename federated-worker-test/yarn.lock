@@ -1992,9 +1992,10 @@ faye-websocket@^0.11.3:
   dependencies:
     websocket-driver ">=0.5.1"
 
-"federated-worker@..\\federated-worker\\federated-worker-1.0.0.tgz":
-  version "1.0.0"
-  resolved "..\\federated-worker\\federated-worker-1.0.0.tgz#a0df8dbd639ee46e90c89effb3245379e5be5d5f"
+federated-worker@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/federated-worker/-/federated-worker-1.1.2.tgz#3fdc6662cb9c15e41caa426aeb023623267e8f15"
+  integrity sha512-VB/qbavGdAG/bVEjUL5WbW1xENyEQKIzfsVIkuM2p6QVI3adb7TGTL7N2nKkYha5jEjubnHQw27l39/WuOkSQw==
 
 fill-range@^7.0.1:
   version "7.0.1"

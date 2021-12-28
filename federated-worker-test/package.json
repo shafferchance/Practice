@@ -27,6 +27,6 @@
     "dev:base": "webpack-dev-server"
   },
   "dependencies": {
-    "federated-worker": "..\\federated-worker\\federated-worker-1.0.0.tgz"
+    "federated-worker": "^1.1.2"
   }
 }
